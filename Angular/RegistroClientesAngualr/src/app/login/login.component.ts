@@ -41,5 +41,10 @@ export class LoginComponent {
       }
     }, 1500);
   }
+  
+  irARegistro() {
+    this.router.navigate(['/registrar']);
+  }
+
 }
 

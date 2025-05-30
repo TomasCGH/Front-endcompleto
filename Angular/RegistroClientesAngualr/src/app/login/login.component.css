@@ -1,8 +1,32 @@
 .pagina {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 1rem;   
 }
+
+.nav-buttons {
+  position: absolute;
+  top: 16px;
+  right: 16px;   /* aquí */
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-buttons .secundario {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 0.9rem;
+  color: #007acc;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.nav-buttons .secundario:hover {
+  color: #005f99;
+}
+
 
 .form-container {
   position: absolute;

@@ -1,4 +1,13 @@
 <div class="pagina">
+  
+  <div class="nav-buttons">
+    <button type="button" class="secundario" (click)="irAOrganizacion()">
+      Soy una organización deportiva
+    </button>
+    <button type="button" class="secundario" (click)="irAlLogin()">
+      Iniciar sesión
+    </button>
+  </div>
   <div class="form-container">
     <h2>Registrar Cliente</h2>
 
@@ -31,29 +40,49 @@
       </div>
 
       <!-- Contraseña -->
-      <input
-        type="password"
-        name="contrasena"
-        placeholder="Contraseña"
-        [(ngModel)]="cliente.contrasena"
-        required
-        minlength="6"
-        #contrasena="ngModel"
-      />
+       <div class="input-group">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          name="contrasena"
+          placeholder="Contraseña"
+          [(ngModel)]="cliente.contrasena"
+          required
+          minlength="6"
+          #contrasena="ngModel"
+        />
+        <button
+          type="button"
+          class="eye-btn"
+          (click)="togglePassword()"
+          tabindex="-1"
+        >
+          <fa-icon [icon]=" showPassword ? faEyeSlash : faEye "></fa-icon>
+        </button>
+      </div>
       <div *ngIf="clienteForm.submitted && contrasena.invalid" class="error">
         La contraseña debe tener mínimo 6 caracteres.
       </div>
 
-      <input
-      type="password"
-      name="confirmarContrasena"
-      placeholder="Confirmar Contraseña"
-      [(ngModel)]="cliente.confirmarContrasena"
-      required
-      #confirmarContrasena="ngModel"
-      />
+      <div class="input-group">
+        <input
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          name="confirmarContrasena"
+          placeholder="Confirmar Contraseña"
+          [(ngModel)]="cliente.confirmarContrasena"
+          required
+          #confirmarContrasena="ngModel"
+        />
+        <button
+          type="button"
+          class="eye-btn"
+          (click)="toggleConfirmPassword()"
+          tabindex="-1"
+        >
+            <fa-icon [icon]=" showConfirmPassword ? faEyeSlash : faEye "></fa-icon>
+          </button>
+      </div>
       <div *ngIf="clienteForm.submitted && !contrasenasCoinciden()" class="error">
-      Las contraseñas no coinciden.
+          Las contraseñas no coinciden.
       </div>
 
 
@@ -93,8 +122,5 @@
 
     <div *ngIf="cargando" class="mensaje cargando">⏳ Registrando...</div>
     <div *ngIf="mensaje && !cargando" class="mensaje">{{ mensaje }}</div>
-      <div class="acciones">
-        <button type="button" class="secundario" (click)="irAlLogin()">Iniciar Sesión</button>
-      </div>
   </div>
 </div>
