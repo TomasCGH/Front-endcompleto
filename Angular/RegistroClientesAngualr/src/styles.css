@@ -1,0 +1,8 @@
+body {
+  background-image: url('https://cdn.pixabay.com/photo/2013/02/21/15/03/borkum-84281_1280.jpg'); /* Fondo de cancha */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
+}
