@@ -1,50 +1,51 @@
-import { Component } from '@angular/core';
+// src/app/login/login.component.ts
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  credenciales = {
-    username: '',
-    contrasena: ''
-  };
-
-  mensaje = '';
-  cargando = false;
+export class LoginComponent implements OnInit {
+  organizaciones = [
+    {
+      nombre: 'IMMER',
+      imagen: 'assets/immer.png',
+      //dominio: '@immer.com'
+    },
+    {
+      nombre: 'INDER',
+      imagen: 'assets/inder.png',
+      //dominio: '@inder.gov.co'
+    },
+    {
+      nombre: 'OLIMPO',
+      imagen: 'assets/Olimpo.png',
+      //dominio: '@olimpo.org'
+    }
+  ];
 
   constructor(private router: Router) {}
 
-  iniciarSesion(form: NgForm) {
-    if (!form.valid) return;
-
-    this.cargando = true;
-
-    // Simulación de petición al backend
-    setTimeout(() => {
-      this.cargando = false;
-
-      if (
-        this.credenciales.username === 'admin' &&
-        this.credenciales.contrasena === '123456'
-      ) {
-        this.mensaje = '✅ Inicio de sesión exitoso.';
-        setTimeout(() => this.router.navigate(['/dashboard']), 1500);
-      } else {
-        this.mensaje = '❌ Credenciales incorrectas.';
-      }
-    }, 1500);
+  ngOnInit(): void {
+   
+    localStorage.removeItem('orgSeleccionada');
   }
-  
-  irARegistro() {
+
+  seleccionarOrg(org: any): void {
+    // Guardamos la organización elegida en localStorage
+    localStorage.setItem('orgSeleccionada', JSON.stringify(org));
+    // Redirigimos a la pantalla de Dashboard
+    this.router.navigate(['/dashboard']);
+  }
+
+  irARegistrar(): void {
+    //  Este método solo será invocado si existe orgSeleccionada;
+    //  en caso contrario, el Guard ya habrá alertado y redirigido al /login.
     this.router.navigate(['/registrar']);
   }
-
 }
-

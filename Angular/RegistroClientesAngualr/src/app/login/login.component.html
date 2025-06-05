@@ -1,47 +1,23 @@
 <div class="pagina">
+  
   <div class="nav-buttons">
-    <button type="button" class="secundario" (click)="irARegistro()">
-      Registrarse
+    <button class="secundario" (click)="irARegistrar()">
+      Registrar encargado
     </button>
   </div>
-  <div class="form-container">
-    <h2>Iniciar Sesión</h2>
 
-    <form #loginForm="ngForm" (ngSubmit)="iniciarSesion(loginForm)">
-      <!-- Usuario -->
-      <input
-        type="text"
-        name="username"
-        placeholder="Username"
-        [(ngModel)]="credenciales.username"
-        required
-        #username="ngModel"
-      />
-      <div *ngIf="loginForm.submitted && username.invalid" class="error">
-        El username es obligatorio.
-      </div>
-
-      <!-- Contraseña -->
-      <input
-        type="password"
-        name="contrasena"
-        placeholder="Contraseña"
-        [(ngModel)]="credenciales.contrasena"
-        required
-        minlength="6"
-        #contrasena="ngModel"
-      />
-      <div *ngIf="loginForm.submitted && contrasena.invalid" class="error">
-        La contraseña debe tener mínimo 6 caracteres.
-      </div>
-
-      <!-- Botón de enviar -->
-      <button type="submit" [disabled]="loginForm.invalid">Ingresar</button>
-    </form>
-
-    <!-- Mensajes -->
-    <div *ngIf="cargando" class="mensaje cargando">⏳ Iniciando sesión...</div>
-    <div *ngIf="mensaje && !cargando" class="mensaje">{{ mensaje }}</div>
+ 
+  <div class="organizaciones-container">
+    <div
+      class="card-org"
+      *ngFor="let org of organizaciones"
+      [style.background-image]="'url(' + org.imagen + ')'"
+      (click)="seleccionarOrg(org)"
+      [attr.aria-label]="org.nombre"
+      role="button"
+      tabindex="0"
+    >
+      <div class="overlay">{{ org.nombre }}</div>
+    </div>
   </div>
 </div>
-

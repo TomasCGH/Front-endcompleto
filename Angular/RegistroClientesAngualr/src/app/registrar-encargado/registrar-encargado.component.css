@@ -1,0 +1,162 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input, select {
+  height: 2.5rem;
+  background-color: #f8f8f8;
+}
+
+
+.pagina {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 1rem;
+  background-image: url('https://cdn.pixabay.com/photo/2016/02/15/11/43/running-track-1201014_1280.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.pagina::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+
+.nav-buttons {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-buttons .secundario {
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.nav-buttons .secundario:hover {
+  color: #dddddd;
+}
+
+
+.form-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: 25px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007acc;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+button:disabled {
+  background-color: #b3b3b3;
+  cursor: not-allowed;
+}
+
+button:hover:enabled {
+  background-color: #005f99;
+}
+
+/* 👁️ Botón ojo */
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+.input-group input {
+  padding-right: 2.5rem;
+}
+
+.eye-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  width: 1.8rem;
+  height: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eye-btn:focus {
+  outline: none;
+}
+
+.eye-btn fa-icon {
+  font-size: 1.2rem;
+  color: #666;
+  pointer-events: none;
+}
+
+.eye-btn:hover fa-icon {
+  color: #000;
+}
+
+/* ✅ Mensajes */
+.mensaje {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.mensaje.cargando {
+  color: orange;
+}
+
+.mensaje-exito {
+  color: green;
+}
+
+.mensaje-error {
+  color: red;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-bottom: 5px;
+}

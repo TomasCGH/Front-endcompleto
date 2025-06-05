@@ -1,8 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 🔧 Fondo global y eliminación de márgenes del body */
 body {
-  background-image: url('https://cdn.pixabay.com/photo/2013/02/21/15/03/borkum-84281_1280.jpg'); /* Fondo de cancha */
+  margin: 0; /* ❗ importante */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   font-family: Arial, sans-serif;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }

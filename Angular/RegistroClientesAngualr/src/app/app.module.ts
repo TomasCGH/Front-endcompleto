@@ -10,16 +10,19 @@ import { RegistroGuard } from './guards/registro.guard';
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+
   {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [RegistroGuard]
   },
+
   {
     path: 'registrar',
     component: RegistrarEncargadoComponent,
     canActivate: [RegistroGuard]
   },
+
   { path: '**', redirectTo: 'login' }
 ];
 

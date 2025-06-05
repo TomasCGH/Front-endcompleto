@@ -1,21 +1,40 @@
 <div class="dashboard">
   <aside class="menu-lateral">
+    <!-- Logo y nombre de la organización (sin cambios) -->
+    <div *ngIf="orgSeleccionada">
+      <img [src]="orgSeleccionada.imagen" alt="{{ orgSeleccionada.nombre }}" class="logo-org" />
+      <div class="nombre-org">{{ orgSeleccionada.nombre }}</div>
+    </div>
+
+    <!-- Menú lateral (sin cambios) -->
     <h3>Catálogo</h3>
     <ul>
       <li>🏠 Inicio</li>
       <li>📋 Clientes</li>
       <li>🎾 Canchas</li>
       <li>🕒 Reservas</li>
-      <li>📊 Reportes</li>
+      <li>⚙️ Ajustes</li>
     </ul>
   </aside>
 
   <main class="contenido">
-    <h2>Bienvenido, usuario 👋</h2>
+    <h2>Bienvenido, Administrador 👋</h2>
+
     <div class="tarjetas">
-      <div class="tarjeta">📋 Módulo Clientes</div>
-      <div class="tarjeta">🎾 Módulo Canchas</div>
-      <div class="tarjeta">🕒 Módulo Reservas</div>
+      <!-- Tarjeta “Registrar Encargado”: igual estilo que el resto -->
+      <div class="tarjeta" routerLink="/registrar">
+        📋 Registrar Encargado
+      </div>
+
+      <!-- Tarjeta “Registrar Canchas” (sin cambios funcionales) -->
+      <div class="tarjeta" (click)="mostrarMensajeNoDisponible()">
+        🎾 Registrar Canchas
+      </div>
+
+      <!-- Tarjeta “Módulo Reservas” (sin cambios funcionales) -->
+      <div class="tarjeta" (click)="mostrarMensajeNoDisponible()">
+        🕒 Módulo Reservas
+      </div>
     </div>
   </main>
 </div>
